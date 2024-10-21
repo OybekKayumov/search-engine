@@ -3,9 +3,7 @@ package searchengine.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @Entity
@@ -17,22 +15,20 @@ public class Site {
     private long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", columnDefinition = "enum" +
-            "('INDEXED', 'INDEXING', 'FAILED')")
-
+    @Column(name = "status", nullable = false,
+            columnDefinition = "enum('INDEXED', 'INDEXING', 'FAILED')")
     private Status status;
 
-    @Column(name = "status_time")
+    @Column(name = "status_time", nullable = false)
     private LocalDateTime statusTime;
 
-    @Column(name = "last_error")
+    @Column(name = "last_error", nullable = true, columnDefinition = "TEXT")
     private String lastError;
 
-    @Column(name = "url")
+    @Column(name = "url", nullable = false)
     private String url;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
-
 
 }
