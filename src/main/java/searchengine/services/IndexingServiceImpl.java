@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import searchengine.config.Site;
 import searchengine.config.SitesList;
 import searchengine.parser.IndexParser;
+import searchengine.parser.SiteIndexed;
 import searchengine.repository.PageRepository;
 import searchengine.repository.SiteRepository;
 

@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,7 +25,10 @@ public class PageEntity implements Serializable {
     @Column(name = "content", nullable = false, columnDefinition = "MEDIUMTEXT")
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "site_id", referencedColumnName = "id", nullable = false)
-    private SiteEntity siteId;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "site_id", referencedColumnName = "id", nullable = false)
+//    private SiteEntity siteId;
+
+    @OneToMany(mappedBy = "page", cascade = CascadeType.ALL)
+    private List<IndexEntity> index = new ArrayList<>();
 }

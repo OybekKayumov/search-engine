@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import searchengine.config.SitesList;
 import searchengine.model.SiteEntity;
 import searchengine.model.Status;
+import searchengine.repository.IndexRepository;
+import searchengine.repository.LemmaRepository;
 import searchengine.repository.PageRepository;
 import searchengine.repository.SiteRepository;
 
@@ -17,6 +19,10 @@ public class SiteIndexed  implements Runnable{
     private static final int processorCoreCount = Runtime.getRuntime().availableProcessors();
     private final PageRepository pageRepository;
     private final SiteRepository siteRepository;
+    private final LemmaRepository lemmasRepository;
+    private final IndexRepository indexRepository;
+
+    private final LemmaParser lemmaParser;
     private final IndexParser indexParser;
     private final String url;
     private final SitesList sitesList;

@@ -5,6 +5,9 @@ import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -12,7 +15,7 @@ import java.time.LocalDateTime;
 public class SiteEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Enumerated(EnumType.STRING)
@@ -21,7 +24,7 @@ public class SiteEntity {
     private Status status;
 
     @Column(name = "status_time", nullable = false)
-    private LocalDateTime statusTime;
+    private Date statusTime;
 
     @Column(name = "last_error", nullable = true, columnDefinition = "TEXT")
     private String lastError;
@@ -32,4 +35,10 @@ public class SiteEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "siteId", cascade = CascadeType.ALL)
+    protected List<PageEntity> pageEntityList = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "siteEntId", cascade =
+            CascadeType.ALL)
+    protected List<LemmaEntity> lemmaEntityList = new ArrayList<>();
 }
