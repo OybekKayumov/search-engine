@@ -3,17 +3,18 @@ package searchengine.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "page", indexes = @Index(name = "pathIndex", columnList = "path", unique = true))
-public class Page {
+@Table(name = "page", indexes = {@Index(name = "path_list", columnList = "path")})
+public class PageEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "path", nullable = false, unique = true, columnDefinition = "TEXT")
+    @Column(name = "path", nullable = false, columnDefinition = "VARCHAR(515)")
     private String path;
 
     @Column(name = "code", nullable = false)
@@ -24,5 +25,5 @@ public class Page {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "site_id", referencedColumnName = "id", nullable = false)
-    private Site siteId;
+    private SiteEntity siteId;
 }
