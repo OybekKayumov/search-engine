@@ -29,4 +29,10 @@ public class LemmaEntity implements Serializable {
 
 	@OneToMany(mappedBy = "lemma", cascade = CascadeType.ALL)
 	private List<IndexEntity> index = new ArrayList<>();
+
+	public LemmaEntity(String lemma, int frequency, SiteEntity siteEntId) {
+		this.lemma = lemma;
+		this.frequency = frequency;
+		this.siteEntId = siteEntId;
+	}
 }

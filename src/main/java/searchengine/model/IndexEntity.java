@@ -26,4 +26,10 @@ public class IndexEntity implements Serializable {
 
     @Column(nullable = false, name = "index_rank")
     private float rank;
+
+    public IndexEntity(PageEntity page, LemmaEntity lemma, float rank) {
+        this.page = page;
+        this.lemma = lemma;
+        this.rank = rank;
+    }
 }

@@ -6,8 +6,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import searchengine.config.Site;
 import searchengine.config.SitesList;
+import searchengine.model.SiteEntity;
+import searchengine.model.Status;
 import searchengine.parser.IndexParser;
+import searchengine.parser.LemmaParser;
 import searchengine.parser.SiteIndexed;
+import searchengine.repository.IndexRepository;
+import searchengine.repository.LemmaRepository;
 import searchengine.repository.PageRepository;
 import searchengine.repository.SiteRepository;
 
@@ -25,16 +30,21 @@ public class IndexingServiceImpl implements IndexingService {
     private ExecutorService executorService;
     private final PageRepository pageRepository;
     private final SiteRepository siteRepository;
+    private final LemmaRepository lemmaRepository;
+    private final IndexRepository indexRepository;
 
-    private final IndexParser indexParser;
-    private final SitesList siteList;
+    private final LemmaParser lemmaParser;      // @Component
+    private final IndexParser indexParser;      // @Component
+    private final SitesList sitesList;
 
     @Override
     public boolean urlIndexing(String url) {
         if (urlCheck(url)) {
             log.info("Начата индексация сайта: " + url);
             executorService = Executors.newFixedThreadPool(processorCoreCount);
-            executorService.submit(new SiteIndexed(pageRepository, siteRepository, indexParser, url, siteList));
+            executorService.submit(new SiteIndexed(pageRepository, siteRepository,
+                    lemmaRepository, indexRepository, lemmaParser,
+                    indexParser, url, sitesList));
             executorService.shutdown();
 
             return true;
@@ -45,16 +55,53 @@ public class IndexingServiceImpl implements IndexingService {
 
     @Override
     public boolean indexingAll() {
-        return false;
+
+        if (isIndexingActive()) {
+            log.debug("Индексация уже запущена");
+            return false;
+        } else {
+            List<Site> siteList = sitesList.getSites();
+            executorService = Executors.newFixedThreadPool(processorCoreCount);
+            for (Site site : siteList) {
+                String url = site.getUrl();
+                SiteEntity siteEntity = new SiteEntity();
+                siteEntity.setName(site.getName());
+                log.info("Парсинг сайта: " + site.getName());
+                executorService.submit(new SiteIndexed(pageRepository,
+                        siteRepository, lemmaRepository, indexRepository,
+                        lemmaParser, indexParser, url, sitesList));
+            }
+            executorService.shutdown();
+        }
+        return true;
     }
 
     @Override
     public boolean stopIndexing() {
+
+        if (isIndexingActive()) {
+            log.info("Останавливаем индексацию");
+            executorService.shutdown();
+            return true;
+        } else {
+            log.info("Индексация не может быть остановлена т.к. не была запущена");
+            return false;
+        }
+    }
+
+    private boolean isIndexingActive() {
+        siteRepository.flush();
+        Iterable<SiteEntity> siteList = siteRepository.findAll();
+        for (SiteEntity site : siteList) {
+            if (site.getStatus() == Status.INDEXING) {
+                return true;
+            }
+        }
         return false;
     }
 
     private boolean urlCheck(String url) {
-        List<Site> urlList = siteList.getSites();
+        List<Site> urlList = sitesList.getSites();
         for (Site site : urlList) {
             if (site.getUrl().equals(url)) {
                 return true;
