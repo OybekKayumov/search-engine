@@ -38,7 +38,7 @@ public class SiteEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "siteId", cascade = CascadeType.ALL)
     protected List<PageEntity> pageEntityList = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "siteEntId", cascade =
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "siteEntityId", cascade =
             CascadeType.ALL)
     protected List<LemmaEntity> lemmaEntityList = new ArrayList<>();
 }

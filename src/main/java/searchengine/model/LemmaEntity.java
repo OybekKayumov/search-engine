@@ -21,7 +21,7 @@ public class LemmaEntity implements Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "site_id", referencedColumnName = "id")
-	private SiteEntity siteEntId;
+	private SiteEntity siteEntityId;
 
 	private String lemma;
 
@@ -30,9 +30,9 @@ public class LemmaEntity implements Serializable {
 	@OneToMany(mappedBy = "lemma", cascade = CascadeType.ALL)
 	private List<IndexEntity> index = new ArrayList<>();
 
-	public LemmaEntity(String lemma, int frequency, SiteEntity siteEntId) {
+	public LemmaEntity(String lemma, int frequency, SiteEntity siteEntityId) {
 		this.lemma = lemma;
 		this.frequency = frequency;
-		this.siteEntId = siteEntId;
+		this.siteEntityId = siteEntityId;
 	}
 }
