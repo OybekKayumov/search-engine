@@ -19,7 +19,7 @@ public interface PageRepository extends JpaRepository<PageEntity, Long> {
 
     @Query(value = "select p.* from Page p join words_index i on p.id = i" +
             ".page_id where i.lemma_id in :lemmas", nativeQuery = true)
-    List<PageEntity> findByLemmas(@Param("lemmas") Collection<LemmaEntity> lemmaListId);
+    List<PageEntity> findByLemmaList(@Param("lemmas") Collection<LemmaEntity> lemmaListId);
 
 //   @Query(value = "SELECT p.* FROM Page p WHERE p.id IN :pageId AND p.site_id IN :siteId")
 //   List<PageEntity> findPathByPageIdAndSiteId(@Param("pageId") PageEntity pageId, @Param("siteId") SiteEntity siteId);
