@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.springframework.stereotype.Component;
+import org.apache.lucene.morphology.russian.RussianLuceneMorphology;
 
 import java.util.ArrayList;
 import java.util.HashMap;

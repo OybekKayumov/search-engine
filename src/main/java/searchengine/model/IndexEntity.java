@@ -1,6 +1,7 @@
 package searchengine.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.io.Serializable;
 @Table(name = "words_index", indexes = {@Index(
         name = "page_id_list", columnList = "page_id"),
         @Index(name = "lemma_id_index",columnList = "lemma_id")})
+@NoArgsConstructor
 public class IndexEntity implements Serializable {
 
     @Id
