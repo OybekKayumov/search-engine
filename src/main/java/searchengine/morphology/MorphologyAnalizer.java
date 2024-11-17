@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
+import org.apache.lucene.morphology.LuceneMorphology;
 import org.springframework.stereotype.Component;
 import org.apache.lucene.morphology.russian.RussianLuceneMorphology;
 
@@ -17,7 +18,7 @@ import java.util.Locale;
 @Component
 public class MorphologyAnalizer implements Morphology {
 
-	private static RussianLuceneMorhpology russianMorph;
+	private static RussianLuceneMorphology russianMorph;
 	private final static String regex = "\\p{Punct}|[0-9]|@|©|◄|»|«|—|-|№|…";
 	private final static Logger logger =
 					LogManager.getLogger(LuceneMorphology.class);

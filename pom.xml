@@ -26,6 +26,8 @@
 <!--            <url>https://gitlab.skillbox.ru/api/v4/projects/263574/packages/maven</url>-->
 <!--        </repository>-->
 <!--    </repositories>-->
+
+
     <repositories>
         <repository>
             <id>github</id>
@@ -33,6 +35,8 @@
             <url>https://maven.pkg.github.com/skillbox-java/russianmorphology</url>
         </repository>
     </repositories>
+
+
 
     <dependencies>
         <dependency>
@@ -83,60 +87,39 @@
             <scope>test</scope>
         </dependency>
 
-
-<!--        <dependency>-->
-<!--            <groupId>org.apache.lucene.morphology</groupId>-->
-<!--            <artifactId>morph</artifactId>-->
-<!--            <version>1.5</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.lucene.morphology</groupId>
+            <artifactId>morph</artifactId>
+            <version>1.5</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.lucene.morphology</groupId>
             <artifactId>lucene-morphology</artifactId>
             <version>1.5</version> <!-- Replace with the latest version -->
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.apache.lucene.analysis</groupId>-->
-<!--            <artifactId>morphology</artifactId>-->
-<!--            <version>1.5</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.lucene.morphology</groupId>-->
-<!--            <artifactId>dictionary-reader</artifactId>-->
-<!--            <version>1.5</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.lucene.morphology</groupId>-->
-<!--            <artifactId>english</artifactId>-->
-<!--            <version>1.5</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.lucene.morphology</groupId>-->
-<!--            <artifactId>russian</artifactId>-->
-<!--            <version>1.5</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.lucene.analysis</groupId>
+            <artifactId>morphology</artifactId>
+            <version>1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene.morphology</groupId>
+            <artifactId>dictionary-reader</artifactId>
+            <version>1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene.morphology</groupId>
+            <artifactId>english</artifactId>
+            <version>1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene.morphology</groupId>
+            <artifactId>russian</artifactId>
+            <version>1.5</version>
+        </dependency>
 
 
-
-        <!-- https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations -->
-<!--        <dependency>-->
-<!--            <groupId>io.swagger.core.v3</groupId>-->
-<!--            <artifactId>swagger-annotations</artifactId>-->
-<!--            <version>2.2.4</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-core &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.swagger.core.v3</groupId>-->
-<!--            <artifactId>swagger-core</artifactId>-->
-<!--            <version>2.2.4</version>-->
-<!--        </dependency>-->
-<!--        &lt;!&ndash; https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-models &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>io.swagger.core.v3</groupId>-->
-<!--            <artifactId>swagger-models</artifactId>-->
-<!--            <version>2.2.4</version>-->
-<!--        </dependency>-->
-        <!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
