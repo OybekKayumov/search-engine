@@ -13,17 +13,17 @@ import searchengine.repository.SiteRepository;
 import searchengine.services.IndexingService;
 import searchengine.services.SearchService;
 import searchengine.services.StatisticsService;
-//import io.swagger.v3.oas.annotations.Operation;
-//import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
 @Slf4j
-//@Tag(name = "API контролер поискового движка",
-//        description = "Индексация всех страниц, переиндексация отдельного сайта, " +
-//                "остановка индексации, поиск, статистика по сайтам")
+@Tag(name = "API контролер поискового движка",
+        description = "Индексация всех страниц, переиндексация отдельного сайта, " +
+                "остановка индексации, поиск, статистика по сайтам")
 public class ApiController {
 
     private final StatisticsService statisticsService;
@@ -39,13 +39,13 @@ public class ApiController {
     }
 
     @GetMapping("/statistics")
-    //@Operation(summary = "Получение статистики по сайтам")
+    @Operation(summary = "Получение статистики по сайтам")
     public ResponseEntity<StatisticsResponse> statistics() {
         return ResponseEntity.ok(statisticsService.getStatistics());
     }
 
     @GetMapping("/startIndexing")
-    //@Operation(summary = "Запуск индексации всех указанных сайтов")
+    @Operation(summary = "Запуск индексации всех указанных сайтов")
     public ResponseEntity<Object> startIndexing() {
 
         if (indexingService.indexingAll()) {
@@ -57,7 +57,7 @@ public class ApiController {
     }
 
     @GetMapping("/stopIndexing")
-    //@Operation(summary = "Остановка индексации сайтов")
+    @Operation(summary = "Остановка индексации сайтов")
     public ResponseEntity<Object> stopIndexing() {
 
         if (indexingService.stopIndexing()) {
@@ -68,7 +68,7 @@ public class ApiController {
     }
 
     @GetMapping("/search")
-    //@Operation(summary = "Поиск информации")
+    @Operation(summary = "Поиск информации")
     public ResponseEntity<Object> search(@RequestParam(name = "query", required = false, defaultValue = "")
              String query, @RequestParam(name = "site", required = false, defaultValue = "")
              String site, @RequestParam(name = "offset", required = false, defaultValue = "0")
@@ -93,7 +93,7 @@ public class ApiController {
     }
 
     @PostMapping("/indexPage")
-    //@Operation(summary = "Индексация отдельной страницы")
+    @Operation(summary = "Индексация отдельной страницы")
     public ResponseEntity<Object> indexPage(@RequestParam(name = "url") String url) {
         if (url.isEmpty()) {
             log.info("Страница не указана");

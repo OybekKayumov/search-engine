@@ -6,7 +6,7 @@ import lombok.Value;
 import java.util.List;
 
 @Data
-//@Value
+@Value
 public class StatisticsData {
     private TotalStatistics total;
     private List<DetailedStatisticsItem> detailed;
