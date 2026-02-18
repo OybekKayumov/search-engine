@@ -4,10 +4,9 @@
 
 ## 🚀 About The Project
 
-Search Engine App is a multi-service search engine built with Spring Boot.  
-The project is designed using a 2-services architecture where indexing and search logic are separated for better scalability and maintainability.
+Search Engine App is a multi-service search engine built with Spring Boot.
 
-The application provides REST API endpoints for:
+This project implements a scalable search engine that exposes a dedicated REST API with the following key features:
 
 - Website indexing
 - Keyword-based search
