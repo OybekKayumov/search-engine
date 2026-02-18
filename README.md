@@ -13,6 +13,10 @@ This project implements a scalable search engine that exposes a dedicated REST A
 - Statistics monitoring
 - Managing indexing processes
 
+
+<img width="917" height="390" alt="изображение" src="https://github.com/user-attachments/assets/cdcfaa44-8240-479b-aaf1-23f33b38220f" />
+
+
 ---
 
 ## 🏗️ Architecture
@@ -37,6 +41,9 @@ The project is based on a microservice-style structure:
 | API         | REST |
 
 ---
+
+<img width="908" height="307" alt="изображение" src="https://github.com/user-attachments/assets/a47f0cbd-e9e1-4b87-9d89-7bf0d436fc53" />
+
 
 ## 📂 Project Structure
 
